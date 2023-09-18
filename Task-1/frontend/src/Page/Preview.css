@@ -1,0 +1,108 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+.Resume_main_box {
+  /* border: 1px solid red; */
+  height: auto;
+  padding: 100px;
+  padding-top: 20px;
+}
+.Resume_main_box > h2 {
+  border: 1px solid black;
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: black;
+  color: white;
+  padding: 5px 30px;
+}
+
+.Resume_box {
+  border: 1px solid rgb(199, 195, 195);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 21cm;
+  /* height: 29.7cm; */
+  height: auto;
+  margin: auto;
+  padding: 20px;
+  background-color: rgb(249, 243, 232);
+  margin-bottom: 20px;
+}
+.First_container_resume {
+  border: 1px solid rgba(131, 130, 130, 0.549);
+  height: 250px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 30% 70%);
+}
+.First_container_resume > div {
+  /* width: 100%; */
+}
+.Image_div_res {
+  margin: 10px;
+  border: 3px solid black;
+  border-radius: 50%;
+}
+.Image_div_res > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.name_div_res {
+  text-align: left;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.Resume_secon_con {
+  /* border: 1px solid red; */
+  height: 75%;
+  display: flex;
+  gap: 10px;
+}
+.Resume_secon_con > div {
+  width: 100%;
+  border: 1px solid rgba(131, 130, 130, 0.293);
+  padding: 10px;
+}
+
+.Contact_section {
+  /* border: 1px solid red; */
+  height: auto;
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.Contact_section > h3 {
+  border-bottom: 2px solid rgb(177, 116, 4);
+  display: inline-block;
+  margin-bottom: 15px;
+  color: rgb(177, 116, 4);
+}
+.Caonctact_icon_div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.Contact_section > p {
+  color: rgb(93, 92, 92);
+}
+
+.Contact_section b {
+  margin-left: 5px;
+}
+
+.Resume_main_box > button {
+  background-color: grey;
+  border: none;
+  padding: 5px 40px;
+  font-size: 20px;
+  color: white;
+}
+.Resume_main_box > button:hover {
+  cursor: pointer;
+  background-color: rgb(165, 162, 162);
+  color: black;
+}

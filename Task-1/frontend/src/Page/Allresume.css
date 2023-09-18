@@ -1,0 +1,33 @@
+.All_resume_box {
+  padding: 30px;
+}
+
+.All_resume_box > div {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.All_resume_box > div > div:nth-child(even) {
+  background-color: azure;
+  border: 1px solid rgb(174, 205, 174);
+  padding: 10px;
+}
+.All_resume_box > div > div:nth-child(odd) {
+  background-color: rgb(255, 240, 252);
+  border: 1px solid rgb(246, 208, 233);
+  padding: 10px;
+}
+.All_resume_box button {
+  margin: 20px;
+  border: none;
+  background-color: grey;
+  padding: 5px 20px;
+  color: white;
+}
+
+.All_resume_box button:hover {
+  cursor: pointer;
+  background-color: rgb(202, 202, 202);
+  color: black;
+}
