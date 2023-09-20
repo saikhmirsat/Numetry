@@ -1,0 +1,129 @@
+/* App.css */
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.Calculator_main_con {
+  padding: 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}
+.Calculator_main_con > div {
+}
+
+.calculator {
+  margin: auto;
+  border: 1px solid grey;
+  width: 300px;
+  padding: 30px 40px 30px 30px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+input {
+  border: 2px solid black;
+  width: 98%;
+  height: 40px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding: 5px;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.buttons button {
+  width: 70px;
+  height: 70px;
+  font-size: 24px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.buttons button:active {
+  transform: scale(0.95);
+}
+
+.row button:nth-child(4) {
+  background-color: #ff5555;
+  color: white;
+}
+
+.row:last-child button {
+  background-color: royalblue;
+  color: white;
+}
+
+.row button:nth-child(4) {
+  background-color: goldenrod;
+  color: white;
+}
+
+input[value="Error"] {
+  color: red;
+}
+
+.history > div {
+  border: 1px solid gray;
+  width: 400px;
+  height: 96%;
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  padding: 10px;
+}
+
+.history_wrapper {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 400px;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  overflow: scroll;
+}
+.history_wrapper > div {
+  border-bottom: 1px solid green;
+  display: grid;
+  grid-template-columns: repeat(3, 10% 70% 20%);
+  align-items: center;
+  height: 30px;
+}
+.history_wrapper button {
+  height: 20px;
+  background-color: royalblue;
+  border: 1px solid grey;
+  color: white;
+}
+.history_wrapper button:hover {
+  background-color: red;
+}
+
+.history > div > button {
+  background-color: royalblue;
+  border: 1px solid black;
+  padding: 10px;
+  color: white;
+}
