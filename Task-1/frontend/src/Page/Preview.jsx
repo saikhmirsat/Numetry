@@ -12,12 +12,12 @@ function Preview() {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user's resume data from the server
-    const id = localStorage.getItem("id"); // Corrected variable declaration
+    
+    const id = localStorage.getItem("id");
 
     async function fetchResumeData() {
       try {
-        const response = await fetch(`http://localhost:8080/resume/${id}`); // Replace with the actual API endpoint
+        const response = await fetch(`http://localhost:8080/resume/${id}`);
         if (response.ok) {
           const data = await response.json();
           setResumeData(data);

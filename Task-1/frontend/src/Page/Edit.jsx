@@ -22,7 +22,6 @@ function Edit() {
   console.log({ obj });
 
   useEffect(() => {
-    // Fetch the user's existing resume data when the edit page loads
     async function fetchResumeData() {
       try {
         await fetch(
@@ -33,12 +32,6 @@ function Edit() {
             setOBJ(res);
             console.log(res);
           });
-        // if (response.ok) {
-        //   const data = await response.json();
-        //   setobj(data); // Pre-fill the form fields with fetched data
-        // } else {
-        //   console.error("Failed to fetch resume data");
-        // }
       } catch (error) {
         console.error("Error fetching resume data:", error);
       }
@@ -67,7 +60,6 @@ function Edit() {
     };
 
     try {
-      // Send obj to the server to update the resume
       await fetch(
         `http://localhost:8080/resume/${localStorage.getItem("id")}`,
         {
@@ -83,13 +75,6 @@ function Edit() {
           window.location.href = "/preview";
           console.log(res);
         });
-
-      // if (response.ok) {
-      //   // Redirect to the preview page after successfully updating the resume
-      //   window.location.href = "/preview";
-      // } else {
-      //   console.error("Failed to update the resume");
-      // }
     } catch (error) {
       console.error("Error updating the resume:", error);
     }
@@ -99,7 +84,6 @@ function Edit() {
     <div className="Home_main_container">
       <h1>Edit Resume</h1>
       <form onSubmit={handleSubmit}>
-        {/* Create input fields for each field in obj */}
         <div>
           <label htmlFor="name">Name:</label>
           <input
@@ -237,7 +221,7 @@ function Edit() {
             onChange={(e) => setExperience(e.target.value)}
           />
         </div>
-        {/* Add similar input fields for other fields in obj */}
+
         <button type="submit">Save</button>
       </form>
     </div>

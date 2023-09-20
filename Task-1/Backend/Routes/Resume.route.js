@@ -15,7 +15,7 @@ ResumeRouter.get('/', async (req, res) => {
     }
 })
 
-// Create a new resume
+
 ResumeRouter.post('/post', async (req, res) => {
     try {
         const newResume = new ResumeModel(req.body);
@@ -29,7 +29,7 @@ ResumeRouter.post('/post', async (req, res) => {
 
 
 
-// Retrieve a resume by ID
+
 ResumeRouter.get('/:id', async (req, res) => {
     try {
         const resume = await ResumeModel.findById(req.params.id);
@@ -42,7 +42,7 @@ ResumeRouter.get('/:id', async (req, res) => {
     }
 });
 
-// Update a resume by ID
+
 ResumeRouter.patch('/:id', async (req, res) => {
     try {
         const resume = await ResumeModel.findByIdAndUpdate(req.params.id, req.body, {
@@ -60,7 +60,7 @@ ResumeRouter.patch('/:id', async (req, res) => {
 
 
 
-// Delete a resume by ID
+
 ResumeRouter.delete('/:id', async (req, res) => {
     try {
         const resume = await ResumeModel.findByIdAndRemove(req.params.id);

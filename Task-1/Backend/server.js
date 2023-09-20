@@ -5,9 +5,9 @@ const cors = require('cors')
 const app = express();
 app.use(cors())
 
-app.use(express.json()); // Middleware to parse JSON requests
+app.use(express.json());
 
-// Apply the ResumeRouter to a specific route
+
 app.use('/resume', ResumeRouter);
 
 app.listen(8080, async () => {
