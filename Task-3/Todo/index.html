@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="Main_container">
+        <div id="container">
+            <h1>To-Do List</h1>
+            <input type="text" id="task-input" placeholder="Add a new task">
+            <button id="add-button">ADD</button>
+            <div id="task-list">
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const taskInput = document.getElementById('task-input');
+        const addButton = document.getElementById('add-button');
+        const taskList = document.getElementById('task-list');
+
+        // Load existing tasks from localStorage
+        const data = JSON.parse(localStorage.getItem('todoData')) || [];
+        console.log(data)
+
+        addButton.addEventListener('click', () => {
+            const taskText = taskInput.value;
+
+            if (taskText === '') {
+                alert('Write your task')
+            } else {
+                let obj = {
+                    task: taskText,
+                    status: false
+                }
+
+                data.push(obj);
+
+                // Save updated data to localStorage
+                localStorage.setItem('todoData', JSON.stringify(data));
+
+                // Clear the input field
+                taskInput.value = '';
+
+                // Update the task list
+                renderData();
+            }
+        });
+
+        // Function to update the task list
+        function renderData() {
+            taskList.innerHTML = ''; // Clear the existing list
+
+            // Add tasks to the list
+            data.forEach((ele, index) => {
+                const listItem = document.createElement('div');
+                listItem.textContent = ele.task;
+
+                const statusBTN = document.createElement('button');
+                statusBTN.innerText = ele.status ? "Completed" : "Not Completed";
+
+                statusBTN.addEventListener('click', () => {
+                    // Toggle the status of the task
+                    ele.status = !ele.status;
+
+                    // Save updated data to localStorage
+                    localStorage.setItem('todoData', JSON.stringify(data));
+
+                    // Update the task list
+                    renderData();
+                });
+
+                // Set the background color based on task status
+                if (ele.status) {
+                    statusBTN.style.backgroundColor = 'green';
+                    statusBTN.style.color = "white"
+                } else {
+                    statusBTN.style.backgroundColor = 'yellow';
+                }
+
+                const editBTN = document.createElement('button')
+                editBTN.innerText = "Edit";
+
+                const deleteBTN = document.createElement('button')
+                deleteBTN.innerText = "Delete";
+
+                // Add event listeners for Edit and Delete buttons
+                editBTN.addEventListener('click', () => {
+                    // Implement the edit functionality here
+                    // You can open a prompt or a modal for the user to edit the task text
+                    // Then update the 'ele.task' property and save to localStorage
+
+                    const editedTask = prompt("Edit the task:", ele.task);
+
+                    if (editedTask !== null) {
+                        ele.task = editedTask;
+                        localStorage.setItem('todoData', JSON.stringify(data));
+                        renderData();
+                    }
+                });
+
+                deleteBTN.addEventListener('click', () => {
+                    // Remove the task from the data array
+                    data.splice(index, 1);
+
+                    // Save updated data to localStorage
+                    localStorage.setItem('todoData', JSON.stringify(data));
+
+                    // Update the task list
+                    renderData();
+                });
+
+                listItem.append(statusBTN, editBTN, deleteBTN);
+
+                taskList.append(listItem);
+            });
+        }
+        renderData();
+    </script>
+</body>
+
+</html>
