@@ -4,11 +4,7 @@ app.use(express.json());
 const { DataRoute } = require('./Data.route')
 const { connection } = require('./confid/db')
 
-
 app.use('/data', DataRoute)
-
-
-
 const port = 8080;
 app.listen(port, async () => {
     try {

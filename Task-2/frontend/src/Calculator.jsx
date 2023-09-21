@@ -25,7 +25,7 @@ const Calculator = () => {
 
   const handleCalculate = () => {
     try {
-      const result = eval(input); // Using eval for simplicity (not recommended for production)
+      const result = eval(input); 
       setHistory([...history, `${input} = ${result}`]);
       setInput(String(result));
     } catch (error) {
