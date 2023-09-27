@@ -18,10 +18,10 @@ const TaskForm = ({ onAddTask }) => {
 
     onAddTask(formData);
 
-    // setTitle("");
-    // setDescription("");
-    // setDueDate("");
-    // setCategory("");
+    setTitle("");
+    setDescription("");
+    setDueDate("");
+    setCategory("");
   };
 
   return (

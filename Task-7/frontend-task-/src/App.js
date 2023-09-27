@@ -9,7 +9,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [filterCategory, setFilterCategory] = useState('');
   const [sortType, setSortType] = useState('');
-  const tasksPerPage = 16; // Number of tasks to display per page
+  const tasksPerPage = 16;
   const [currentPage, setCurrentPage] = useState(1);
 
 
@@ -20,7 +20,7 @@ function App() {
 
   const filterTasks = (category) => {
     setFilterCategory(category);
-    setCurrentPage(1); // Reset to the first page when changing filters
+    setCurrentPage(1);
   };
 
   const sortTasks = (type) => {
@@ -43,12 +43,10 @@ function App() {
     return filteredTasks;
   };
 
-  // Calculate the index of the first and last tasks for the current page
   const indexOfLastTask = currentPage * tasksPerPage;
   const indexOfFirstTask = indexOfLastTask - tasksPerPage;
   const currentTasks = getFilteredAndSortedTasks().slice(indexOfFirstTask, indexOfLastTask);
 
-  // Function to handle page navigation
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
