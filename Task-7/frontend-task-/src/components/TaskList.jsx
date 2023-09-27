@@ -1,6 +1,7 @@
+// File: TaskList.js
 import React from "react";
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, onEditTask }) => {
   return (
     <div className="TaskList_con">
       {tasks.map((task) => (
@@ -9,6 +10,7 @@ const TaskList = ({ tasks }) => {
           <p>{task.description}</p>
           <p>Due Date: {task.dueDate}</p>
           <p>Category: {task.category}</p>
+          <button onClick={() => onEditTask(task)}>Edit</button>
         </div>
       ))}
     </div>
