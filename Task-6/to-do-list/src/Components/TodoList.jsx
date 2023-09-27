@@ -3,9 +3,7 @@ import { BsCircle } from "react-icons/bs";
 import { BsCheck2Circle } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
 
-export default function TodoList({ title, status, id, togglebtn, deleteItem }) {
-  const handleDelete = () => {
-    // Call the delete function with the item's id
+export default function TodoList({ title, status, id, togglebtn, deleteItem }) {  const handleDelete = () => {
     deleteItem(id);
   };
 

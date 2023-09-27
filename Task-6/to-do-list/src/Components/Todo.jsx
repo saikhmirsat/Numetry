@@ -6,13 +6,11 @@ export default function Todo() {
   const [arr, setArr] = React.useState([]);
   const AddTodo = (text) => {
     if (!text) {
-      // Check if the input is empty, show an alert if it is.
       alert("Please enter a task.");
       return;
     }
 
     if (arr.some((item) => item.title === text)) {
-      // Check if the same text already exists in the array, show an alert if it does.
       alert("Task already exists.");
       return;
     }
@@ -32,7 +30,6 @@ export default function Todo() {
     setArr(toggleUpdate);
   };
   const deleteItem = (id) => {
-    // Filter the array to remove the item with the specified id
     const updatedArr = arr.filter((ele) => ele.id !== id);
     setArr(updatedArr);
   };
@@ -50,7 +47,7 @@ export default function Todo() {
             status={ele.status}
             id={ele.id}
             togglebtn={togglebtn}
-            deleteItem={deleteItem} // Pass the delete function
+            deleteItem={deleteItem}
           />
         ))}
       </div>
