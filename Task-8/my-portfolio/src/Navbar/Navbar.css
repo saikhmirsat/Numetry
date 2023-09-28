@@ -1,0 +1,155 @@
+.mobile_navbar {
+    display: none;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+    display: flex;
+    gap: 30px;
+    height: 50px;
+    padding-left: 40px;
+}
+
+.navbar>div {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.navbar.active {
+    background-color: #1f0a0aa6;
+    /* background-color: red; */
+    transition: 0.5s;
+    /* opacity: 0.5; */
+}
+
+.activeNavItme {
+    border-bottom: 4px solid #CF1C1A;
+
+}
+
+.navbar>.navitem:hover {
+    border-bottom: 4px solid #CF1C1A;
+    transition: 0.4s;
+
+}
+
+
+
+div.nav-resume-btn {
+    height: 40px;
+    border: none;
+    background-color: #CF1C1A;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-left: 50%;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    /* gap: 10px; */
+    margin-top: 5px;
+}
+
+.nav-resume-btn a {
+    text-decoration: none;
+    color: white;
+}
+
+@media (max-width:1180px) {
+    .navbar {
+        /* border: 1px solid red; */
+        padding-left: 70px;
+    }
+
+    .navbar>div {
+        /* border: 1px solid blueviolet; */
+    }
+
+    div.nav-resume-btn {
+        /* border: 1px solid red; */
+        margin-left: 40px;
+        padding: 0px 10px;
+        height: 30px;
+        margin-top: 10px;
+    }
+
+
+}
+
+@media (max-width:740px) {
+    .navbar {
+        display: none;
+    }
+
+    .mobile_navbar {
+        display: contents;
+    }
+
+    .mobile_nav_div {
+        /* border: 1px solid red; */
+
+        position: fixed;
+        z-index: 1;
+
+
+    }
+
+    .mobile_nav_hamburger {
+        border: none;
+        float: left;
+        font-size: 20px;
+        margin: 10px 10px;
+        height: 30px;
+        background-color: #CF1C1A;
+    }
+
+    .mobile_icon_div {
+        /* border: 1px solid green; */
+        text-align: center;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid grey;
+    }
+
+    .mobile_icon_div a {
+        text-decoration: none;
+        color: white;
+        /* font-size: 25px; */
+    }
+
+    .draw_body {
+        background-color: rgba(8, 7, 7, 0.875);
+        color: white;
+
+    }
+
+    .draw_body svg {
+        font-size: 30px;
+        color: #CF1C1A;
+    }
+
+    #closeBTN {
+        display: none;
+    }
+
+    .hamburger_close_btn {
+        /* border: 1px solid red; */
+        width: 30px;
+        height: 30px;
+        position: fixed;
+        margin: 10px 10px;
+        color: #CF1C1A;
+    }
+
+}

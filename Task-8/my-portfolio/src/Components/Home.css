@@ -1,0 +1,176 @@
+.home {
+    height: auto;
+    overflow: hidden;
+}
+
+.home_video {
+    width: 100%;
+}
+
+.home_container {
+    width: 100%;
+    position: absolute;
+    top: 150px;
+}
+
+.Header-intro {
+    width: 100%;
+    font-size: 50px;
+    color: white;
+}
+
+.title {
+    animation-name: moveRight;
+    animation-duration: 0.7s;
+}
+
+.title2 {
+    animation-name: moveLeft;
+    animation-duration: 0.7s;
+}
+
+.text {
+    font-size: 70px;
+    color: white;
+    font-weight: bold;
+    margin-top: -60px;
+}
+
+@keyframes moveRight {
+    0% {
+        opacity: 0;
+        transform: translate(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        opacity: 0;
+        transform: translate(-150px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.home_social_con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.home_social_con>div {
+    padding: 10px 10px;
+    border-radius: 50%;
+    background-color: #CF1C1A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home_social_con svg {
+    font-size: 25px;
+}
+
+.home_contact_btn {
+    margin-top: 30px;
+    background-color: #CF1C1A;
+    border: none;
+    font-size: 25px;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.home_video_mobile {
+    display: none;
+}
+
+
+
+@media (max-width:1180px) {
+    .home_video_mobile {
+        display: flex;
+        width: 100%;
+        margin-top: -200px;
+    }
+
+    .home {
+        /* border: 13px solid gray; */
+        height: 600px;
+        overflow: hidden;
+    }
+
+
+
+    .home_container {
+        /* border: 1px solid green; */
+        top: 80px;
+    }
+
+    .Header-intro {
+        font-size: 40px;
+    }
+
+    .text {
+        font-size: 40px;
+        margin-top: -40px;
+    }
+
+    .home_contact_btn {
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 20px;
+    }
+
+    .home_social_con {
+        margin-top: 20px;
+    }
+
+}
+
+@media (max-width:740px) {
+
+    .home {
+        /* border: 3px solid green; */
+        /* background-image: url('https://creazilla-store.fra1.digitaloceanspaces.com/videos/7941123/black-black-friday-background-video-lg.jpeg'); */
+        /* background-position: left; */
+        height: 500px;
+        overflow: hidden;
+    }
+
+    .home_video_mobile {
+        display: flex;
+        width: 100%;
+        margin-top: -5px;
+    }
+
+    .home_container {
+        top: 70px;
+    }
+
+    .Header-intro {
+        font-size: 30px;
+    }
+
+    .text {
+        /* border: 1px solid red; */
+        /* height: 100px; */
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .home_social_con {
+        gap: 10px;
+    }
+}

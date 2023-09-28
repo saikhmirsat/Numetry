@@ -1,0 +1,183 @@
+.skills {
+    height: 750px;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+}
+
+.skills-main-container {
+    height: 100%;
+}
+
+
+.skills-container {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+}
+
+.skills-container>div {
+    border: 1px solid rgba(128, 128, 128, 0.346);
+    /* background-color: #00ca7d89; */
+    background-color: unset;
+    width: 30%;
+    padding: 20px 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.skills-container>div:nth-child(1):hover {
+    box-shadow: 0px 5px 20px #e36403;
+}
+
+.skills-container>div:nth-child(1):hover::after {
+    content: 'HTML';
+    color: rgb(255, 132, 0);
+}
+
+.skills-container>div:nth-child(2):hover {
+    box-shadow: 0px 5px 20px #0377e3;
+
+}
+
+.skills-container>div:nth-child(3):hover {
+    box-shadow: 0px 5px 20px #f8f803;
+
+}
+
+.skills-container>div:nth-child(4):hover {
+    box-shadow: 0px 5px 20px #03e30e;
+
+}
+
+.skills-container>div:nth-child(5):hover {
+    box-shadow: 0px 5px 20px #fbf2eb;
+
+}
+
+.skills-container>div:nth-child(6):hover {
+    box-shadow: 0px 5px 20px #0e9bf8;
+
+}
+
+.skills-container>div:nth-child(7):hover {
+    box-shadow: 0px 5px 20px #ab04c9;
+
+}
+
+.skills-container>div:nth-child(8):hover {
+    box-shadow: 0px 5px 20px #c903e3;
+
+}
+
+.skills-container>div:nth-child(9):hover {
+    box-shadow: 0px 5px 20px #03a7e3;
+
+}
+
+.skills-container>div:nth-child(10):hover {
+    box-shadow: 0px 5px 20px #a003e3;
+
+}
+
+.skills-container>div:nth-child(11):hover {
+    box-shadow: 0px 5px 20px #e30303;
+
+}
+
+.skills-container>div:nth-child(12):hover {
+    box-shadow: 0px 5px 20px #efa6d2;
+
+}
+
+.skills-container>div:nth-child(13):hover {
+    box-shadow: 0px 5px 20px #e30312;
+
+}
+
+.skills-container>div:nth-child(14):hover {
+    box-shadow: 0px 5px 20px #03afe3;
+
+}
+
+.skills-container>div:nth-child(15):hover {
+    box-shadow: 0px 5px 20px #e303e3;
+
+}
+
+.skills-container>div:nth-child(16):hover {
+    box-shadow: 0px 5px 20px orangered;
+
+}
+
+.skills-container>div:nth-child(17):hover {
+    box-shadow: 0px 5px 20px white;
+
+}
+
+.skills-container>div:nth-child(18):hover {
+    box-shadow: 0px 5px 20px blue;
+
+}
+
+.skills-container>div:nth-child(19):hover {
+    box-shadow: 0px 5px 20px grey;
+
+}
+
+
+.skills-container>div>img {
+    width: 100%;
+    /* background-color: white; */
+}
+
+.myskills-header {
+    font-size: 50px;
+    color: #CF1C1A;
+    margin-bottom: 50px;
+}
+
+@media (max-width:1180px) {
+    .skills {
+        height: 830px;
+    }
+
+    .skills-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+
+    .skills-container img {
+        width: 100%;
+    }
+}
+
+@media (max-width:740px) {
+    .myskills-header {
+        font-size: 30px;
+    }
+
+    .skills-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .skills {
+        height: auto;
+        padding-bottom: 50px;
+    }
+
+    .skills-container img {
+        width: 100%;
+    }
+
+    .skills-container>div {
+        border: 1px solid rgba(255, 0, 0, 0.376);
+    }
+
+}

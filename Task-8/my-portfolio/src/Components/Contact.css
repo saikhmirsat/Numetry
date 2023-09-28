@@ -1,0 +1,237 @@
+.contact-container {
+    border-top: 1px solid #cf1d1a61;
+    display: flex;
+    background-color: black;
+    color: white;
+}
+
+.input-container {
+    padding: 50px;
+    width: 48%;
+}
+
+.input-container>form {
+    border: 2px solid #CF1C1A;
+    border-radius: 10px;
+    /* box-shadow: #f7f9fa77 0px 5px 10px, #f6f8f94f 0px 0px 20px; */
+    width: 80%;
+    margin: auto;
+    /* padding: 40px 40px 10px 40px; */
+}
+
+.input-container>form>input {
+    width: 80%;
+    height: 50px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 25px;
+    padding-left: 30px;
+    background: none;
+    box-shadow: 1px 0px 10px red;
+    color: white;
+    font-weight: lighter;
+    outline: none;
+}
+
+.input-container>form>textarea {
+    width: 75%;
+    height: 150px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: none;
+    font-size: 25px;
+    padding: 30px;
+    background: none;
+    box-shadow: 1px 0px 10px red;
+    color: white;
+    font-weight: normal;
+    background: none;
+    outline: none;
+
+}
+
+.meg-me {
+    position: relative;
+    bottom: 17px;
+}
+
+::-webkit-input-placeholder {
+    /* Edge */
+    color: #039de3;
+    font-size: 20px;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #039de3;
+    font-size: 20px;
+}
+
+::placeholder {
+    color: white;
+    font-size: 20px;
+}
+
+.input-container>form>input:hover {
+    box-shadow: white 0px 5px 10px, white 0px 0px 20px;
+    transition: 0.7s;
+}
+
+.input-container>form>textarea:hover {
+    box-shadow: white 0px 5px 10px, white 0px 0px 30px;
+    transition: 0.7s;
+}
+
+#submitBTN {
+    width: 87%;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    font-size: 25px;
+    background: none;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 2px black;
+    background-color: #CF1C1A;
+    box-shadow: none;
+}
+
+#submitBTN:hover {
+    border: none;
+}
+
+.contact-con-child-2 {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.cont-con-child-2-con-1 {
+    width: 100%;
+
+
+}
+
+.resume-btn-div {
+    width: 50%;
+    margin: auto;
+    background-color: #CF1C1A;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.resume-btn {
+    width: 50%;
+    font-size: 25px;
+    color: white;
+    border-radius: 5px;
+    border: none;
+
+    background: none;
+
+}
+
+
+
+.contact-me-head {
+    font-size: 25px;
+    color: #039de3;
+    text-decoration: underline;
+    text-underline-offset: 12px;
+    margin-top: 30px;
+}
+
+.con-address-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 25px;
+    text-align: left;
+    padding: 10px;
+}
+
+.con-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* font-size: 20px; */
+    gap: 10px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width:820px) {
+    .contact-container {
+        flex-direction: column-reverse;
+    }
+
+    .contact-con-child-2 {
+        width: 100%;
+    }
+
+
+
+    .input-container {
+        width: 87%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .resume-btn {
+        font-size: 20px;
+        padding: 5px 10px;
+    }
+
+    .resume-btn-div {
+        margin-top: 20px;
+    }
+
+    .contact-me-head {
+        /* border: 1px solid gray; */
+        font-size: 20px;
+        margin: 0px;
+    }
+
+    .con-logo-container {
+        font-size: 20px;
+    }
+
+    .input-container {
+        padding: 30px;
+        width: 82%;
+    }
+
+    .input-container>form {
+        width: 80%;
+        height: 430px;
+        padding: 20px;
+        /* font-size: 20px; */
+    }
+
+    .input-container>form>textarea {
+        width: 65%;
+        height: 50px;
+    }
+
+    .meg-me {
+        font-size: 20px;
+        bottom: 10px;
+    }
+
+    #submitBTN {
+        padding: 0px;
+        font-size: 16px;
+        height: 30px;
+    }
+
+    .input-container>form {
+        padding-bottom: 0px;
+    }
+
+    .input-container>form>input {
+        height: 30px;
+        font-size: 20px;
+        padding: 10px;
+    }
+
+}
