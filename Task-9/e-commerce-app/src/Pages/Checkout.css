@@ -1,0 +1,90 @@
+.checkout-container {
+  /* border: 1px solid red; */
+  padding: 50px;
+}
+.checkout-container form {
+  border: 3px solid rgb(119, 8, 198);
+  width: 30%;
+  margin: auto;
+  padding: 30px 30px;
+  border-radius: 10px;
+}
+.form-group {
+  /* border: 1px solid #ccc; */
+  display: grid;
+  grid-template-columns: repeat(2, 20% 80%);
+  margin-bottom: 20px;
+}
+textarea {
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 20px;
+  outline: none;
+  padding: 5px;
+}
+select {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+}
+.checkout-container button {
+  background: rgb(182, 9, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 9, 241, 1) 0%,
+    rgba(113, 0, 255, 1) 100%
+  );
+  border: none;
+  padding: 10px;
+  color: white;
+  width: 50%;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.success-image {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+}
+.Continue_BTN {
+  padding: 10px;
+  background: rgb(182, 9, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 9, 241, 1) 0%,
+    rgba(113, 0, 255, 1) 100%
+  );
+  width: 40%;
+  margin: auto;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.sorting-container {
+  border: 1px solid red;
+  width: 50%;
+  margin: auto;
+  background: rgb(182, 9, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 9, 241, 1) 0%,
+    rgba(113, 0, 255, 1) 100%
+  );
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.sorting-container input {
+  width: 60%;
+  outline: none;
+}
+.sorting-container select {
+  border-radius: unset;
+  padding: 10px;
+  margin-left: 10px;
+}
+.sorting-container label {
+  font-weight: bold;
+}

@@ -1,0 +1,25 @@
+.Navbar {
+  /* border: 1px solid red; */
+
+  background: rgb(182, 9, 241);
+  background: linear-gradient(
+    90deg,
+    rgba(182, 9, 241, 1) 0%,
+    rgba(113, 0, 255, 1) 100%
+  );
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 5px;
+}
+.Navbar a {
+  /* border: 1px solid red; */
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+.Nav_active {
+  border-bottom: 2px solid white;
+}
