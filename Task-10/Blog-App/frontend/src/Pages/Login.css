@@ -1,0 +1,41 @@
+.login_main_con {
+  padding: 100px;
+  /* border: 1px solid green; */
+}
+
+.loginContainer {
+  border: 1px solid orangered;
+  width: 40%;
+  margin: auto;
+  padding-top: 0px;
+  padding: 30px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.loginContainer > input {
+  width: 95.5%;
+  outline: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.loginContainer > div {
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 5px;
+  margin-bottom: 20px;
+}
+.loginContainer > div > input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+.loginContainer button {
+  border: none;
+  background-color: orangered;
+  color: white;
+  padding: 10px 30px;
+  font-size: 15px;
+}

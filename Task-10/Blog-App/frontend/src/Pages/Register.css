@@ -1,0 +1,71 @@
+.register_main_con {
+  /* border: 1px solid red; */
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Register_con {
+  border: 1px solid orangered;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 40%;
+  padding: 30px;
+  margin: auto;
+}
+
+.Register_con input {
+  border: 1px solid rgb(199, 197, 197);
+  width: 97.2%;
+  outline: none;
+  padding: 7px;
+  margin-bottom: 10px;
+  font-size: medium;
+}
+
+.Register_con select {
+  border: 1px solid rgb(199, 197, 197);
+  margin-bottom: 10px;
+  width: 100%;
+  outline: none;
+}
+
+.Register_con > div {
+  /* border: 1px solid red; */
+  display: flex;
+  gap: 5px;
+}
+
+.Register_con button {
+  width: 100%;
+  padding: 10px;
+  font-size: medium;
+  border-radius: 3px;
+  /* border: 1px solid #fde000; */
+  border: none;
+  background-color: orangered;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+
+.Register_con button:hover {
+  background-color: rgb(210, 59, 4);
+  transition: all 700ms;
+}
+.register_password_div {
+  height: 40px;
+  border: 1px solid rgb(199, 197, 197);
+
+  margin-bottom: 10px;
+  display: flex;
+}
+.register_password_div input {
+  border: none;
+  height: 60%;
+}
+.register_password_div div {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}

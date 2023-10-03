@@ -1,0 +1,110 @@
+/* Blog Card Styles */
+.post_conatiner {
+  border: 1px solid red;
+  margin: 20px;
+  width: 31%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  padding: 10px;
+  background-color: orangered;
+}
+.post_conatiner input {
+  width: 100%;
+  padding: 5px;
+}
+.post_conatiner button {
+  width: 200px;
+  background-color: orangered;
+  color: white;
+  border: 4px solid white;
+  margin-left: 20px;
+}
+.Blog_container {
+  /* padding-top: 20px; */
+}
+.Blog_card {
+  width: 30%;
+  margin: auto;
+  border: 1px solid #ccc;
+  background-color: orangered;
+  padding: 20px;
+  color: white;
+  /* background-color: #fff; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.Blog_card img {
+  width: 100%;
+  height: auto;
+}
+
+.Blog_card h3 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.Blog_card p {
+  font-size: 1rem;
+}
+
+/* Button Styles */
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.toggle-comment-button,
+.delete-button,
+.edit-button,
+.submit-comment-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.toggle-comment-button:hover,
+.delete-button:hover,
+.edit-button:hover,
+.submit-comment-button:hover {
+  background-color: #0056b3;
+}
+
+/* Comment Section Styles */
+.CommentSection {
+  margin-top: 20px;
+  /* border: 1px solid black; */
+}
+
+.CommentSection p {
+  margin: 5px 0;
+}
+.comment_card {
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  padding: 10px;
+  /* background-color: #cccccc47; */
+  border-radius: 20px;
+}
+
+.Submit_comment_div {
+  /* border: 1px solid #ccc; */
+  padding: 10px;
+
+  display: flex;
+}
+.Submit_comment_div input {
+  width: 100%;
+  outline: none;
+  padding: 5px;
+}
+
+/* Customize other styles as needed */

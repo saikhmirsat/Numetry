@@ -1,0 +1,36 @@
+.navBar {
+  background-color: orangered;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+.navBar a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+.register_login {
+  display: flex;
+  gap: 40px;
+}
+.logout-option {
+  display: inline-block;
+  position: absolute;
+  right: 13px;
+  top: 30px;
+}
+.logout-option button {
+  border: none;
+  background-color: orangered;
+  font-size: 16px;
+  padding: 5px 10px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+.logout-option button:hover {
+  color: black;
+  font-weight: bold;
+}
