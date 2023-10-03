@@ -1,10 +1,11 @@
 .notification-display {
   display: none;
   position: fixed;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #06aef0;
+
   color: white;
   padding: 20px;
   border-radius: 10px;

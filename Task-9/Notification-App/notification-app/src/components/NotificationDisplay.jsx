@@ -6,7 +6,6 @@ function NotificationDisplay() {
   const [greetingMessage, setGreetingMessage] = useState("");
 
   useEffect(() => {
-    // Fetch the greeting message from the backend
     const fetchGreeting = async () => {
       try {
         const response = await fetch(`http://localhost:8080/api/notifications`);
@@ -20,11 +19,8 @@ function NotificationDisplay() {
         console.error("Failed to fetch greeting:", error);
       }
     };
+    const greetingTimeout = setTimeout(fetchGreeting, 10000); // 10,000 milliseconds (10 seconds)
 
-    // Show the greeting after a delay
-    const greetingTimeout = setTimeout(fetchGreeting, 5000); // 10,000 milliseconds (10 seconds)
-
-    // Clean up the timeout to prevent memory leaks
     return () => {
       clearTimeout(greetingTimeout);
     };
@@ -36,10 +32,11 @@ function NotificationDisplay() {
 
   return (
     <div className={`notification-display ${showGreeting ? "show" : "hide"}`}>
-      <p>{greetingMessage}</p>
+      <h3>{greetingMessage}</h3>
       <span className="close-button" onClick={closeNotification}>
         &times;
       </span>
+      
     </div>
   );
 }
