@@ -3,8 +3,6 @@ const { UserModel } = require('../models/User.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-
-
 const UserRoute = express.Router()
 
 UserRoute.get('/', async (req, res) => {
@@ -20,17 +18,14 @@ UserRoute.get('/', async (req, res) => {
     }
 });
 UserRoute.get('/:id', async (req, res) => {
-    const { id } = req.params; // Use "id" instead of "_id" for consistency
+    const { id } = req.params;
 
     try {
-        const user = await UserModel.findOne({ _id: id }); // Find the user by id
+        const user = await UserModel.findOne({ _id: id }); 
 
         if (!user) {
-            // If user not found, return a 404 response
             return res.status(404).json({ message: 'User not found' });
         }
-
-        // If user found, return user data as JSON
         res.status(200).json(user);
     } catch (error) {
         console.error('Error fetching user data:', error);

@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { calculateTimeAgo, GetPerticularUser } from "../functions";

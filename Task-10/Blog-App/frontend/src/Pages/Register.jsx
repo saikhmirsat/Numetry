@@ -1,4 +1,4 @@
-// import { Spinner, Text } from "@chakra-ui/react";
+
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,7 @@ import { BsFillEyeFill } from "react-icons/bs";
 
 export default function Register() {
   const [hide, setHide] = useState(false);
-  // console.log({ sta: hide });
+  
 
   const [firstname, setFname] = useState("");
   const [lastname, setLname] = useState("");

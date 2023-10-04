@@ -9,7 +9,7 @@ const BlogSchema = mongoose.Schema({
     comments: [CommentModel.schema],
     BlogPostDate: {
         type: Date,
-        default: Date.now, // Set the default value to the current date and time
+        default: Date.now, 
     }
 }, {
     versionKey: false

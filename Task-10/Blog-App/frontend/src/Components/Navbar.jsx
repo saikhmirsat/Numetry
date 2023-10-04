@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 
 export default function Navbar() {
   const [isAuth, setIsAuth] = useState(false);
@@ -34,7 +33,7 @@ export default function Navbar() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {isAuth ? <Link to="/profile">Profile</Link> : ""}
+        {isAuth ? <Link to="/blogs">Profile</Link> : ""}
         {isHovered && isAuth && (
           <div className="logout-option">
             <button onClick={() => handleLogout()}>Logout</button>
