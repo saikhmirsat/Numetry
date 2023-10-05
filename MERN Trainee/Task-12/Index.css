@@ -1,0 +1,493 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  margin-top: 0;
+}
+
+#Navbar_con {
+  /* border: 1px solid red; */
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.Nav_child_1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 30px;
+}
+
+.Nav_child_1 h3 {
+  font-family: museo-sans, sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 20px;
+  color: white;
+}
+
+.Nav_child_1 h3:hover {
+  color: orangered;
+}
+
+.Nav_child_2 {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-right: 20px;
+}
+
+.Nav_child_2 > a {
+  text-decoration: none;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  color: white;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.background_gif {
+  background-image: url("https://t4.ftcdn.net/jpg/02/81/89/73/360_F_281897358_3rj9ZBSZHo5s0L1ug7uuIHadSxh9Cc75.jpg");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.2;
+  z-index: -1;
+}
+.Home_image_content {
+  /* border: 1px solid red; */
+  position: absolute;
+  top: 290px;
+  color: white;
+  text-align: center;
+  left: 16%;
+}
+.Home_image_content > h1 {
+  font-family: Montserrat, sans-serif;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 65px;
+}
+.Home_image_content > p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 60px;
+  color: #ffffff;
+}
+.Home_image_content button {
+  font-family: Montserrat, sans-serif;
+  background-color: #fd3635;
+  font-size: 13px;
+  color: #ffffff;
+  border: 0px;
+  padding: 15px 40px;
+  margin-top: 20px;
+  border-radius: 5px;
+  line-height: 19px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+#get_quote {
+  border: 1px solid #399fd0;
+  padding: 10px 20px;
+  color: #399fd0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  /* Add a linear gradient for the smooth transition */
+  background-size: 200% 100%;
+  background-position: right;
+  transition: color 0.3s ease, background-position 0.3s ease; /* Apply transition to both color and background-position */
+}
+
+#get_quote:hover {
+  color: white;
+  background-color: #399fd0;
+}
+
+.Home_firstContainer {
+  /* border: 1px solid red; */
+  width: 50%;
+  margin: auto;
+  padding: 40px 0px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.Home_firstContainer {
+  color: white;
+}
+.Home_firstContainer p:nth-child(1) {
+  color: orangered;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.Home_firstContainer h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+.Home_first_con_line {
+  width: 10%;
+  margin: auto;
+  border: 1px solid orangered;
+  margin-bottom: 20px;
+  /* background-color: orangered; */
+}
+.Home_firstContainer p:nth-child(4) {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 25px;
+  color: #ffffffb8;
+  margin-bottom: 30px;
+}
+.Home_firstContainer p:nth-child(5) {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 25px;
+  color: #ffffffb8;
+}
+.body_homepage {
+  background-color: #131c27;
+  padding-bottom: 100px;
+}
+.Home_second_con {
+  /* border: 1px solid rgb(125, 10, 10); */
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 140px;
+}
+.Home_second_con > div {
+  /* border: 1px solid burlywood; */
+  height: auto;
+}
+.Home_second_con > div > img {
+  width: 80px;
+  margin-left: 10px;
+}
+.Home_second_con h3 {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.Home_second_con p {
+  color: #ffffffb8;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+  width: 93%;
+  margin: auto;
+  line-height: 25px;
+}
+.Home_third_con {
+  /* border: 1px solid wheat; */
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 80%;
+  margin: auto;
+  font-family: "Open Sans", sans-serif;
+}
+.Home_third_con > div {
+  /* border: 1px solid red; */
+  height: auto;
+}
+
+.Home_third_con p:nth-child(1) {
+  color: orangered;
+  font-size: 17px;
+}
+.Home_third_con p:nth-child(3) {
+  color: #ffffffb8;
+  font-size: 14px;
+  line-height: 25px;
+  font-weight: 300;
+  width: 80%;
+}
+.Home_third_con h1 {
+  font-size: 24px;
+  color: white;
+  font-weight: 350;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+.Home_third_con img {
+  width: 75%;
+}
+
+.Home_third_con button {
+  border: 0px;
+  background-color: #fd3635;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 5px;
+  margin-top: 30px;
+  font-weight: lighter;
+  font-size: 13px;
+}
+.Home_line-2 {
+  border: 0.1px solid #cccccc4c;
+  margin: 100px 0px;
+}
+
+.Home_forth_con {
+  /* border: 1px solid red; */
+  height: 270px;
+  margin-top: 80px;
+  background-image: url("https://www.theglassberry.com/assets/img/bg/img-bg-5.jpg");
+  background-size: cover;
+  background-position: center;
+  /* background-position: left bottom; */
+}
+.Home_forth_con_content {
+  /* border: 1px solid red; */
+  display: inline-block;
+  position: relative;
+  bottom: 190px;
+  left: 35%;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+}
+.Home_forth_con_content p {
+  color: #ffffffb8;
+  margin-bottom: 10px;
+}
+.Home_forth_con_content h1 {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+.Home_forth_con_content > div button {
+  border: 0px;
+  font-size: 11px;
+  padding: 10px 30px;
+  color: white;
+  border-radius: 5px;
+}
+.home_container_five {
+  border: 1px solid black;
+  height: auto;
+  background-color: black;
+  margin-top: -120px;
+  color: white;
+  text-align: center;
+  background-image: url("https://www.theglassberry.com/assets/img/bg/worldmap.png");
+  background-size: cover;
+  background-position: center;
+}
+.home_container_five h1 {
+  font-family: museo-sans, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  margin-top: 100px;
+}
+.home_container_five > div {
+  /* border: 1px solid green; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 80%;
+  margin: auto;
+  margin-top: 60px;
+  gap: 60px 20px;
+  height: auto;
+}
+.home_con_five_cards {
+  /* border: 1px solid red; */
+}
+.home_con_five_cards img {
+  width: 80px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.home_con_five_cards h3 {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.home_con_five_cards p {
+  color: #ffffffb8;
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 25px;
+}
+.home_container_five button {
+  background: rgb(225, 41, 112);
+  background: linear-gradient(
+    90deg,
+    rgba(225, 41, 112, 1) 0%,
+    rgba(250, 75, 60, 1) 100%
+  );
+  font-size: 14px;
+  color: white;
+  border: 0px;
+  padding: 15px 30px;
+  border-radius: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.home_container_six {
+  /* border: 1px solid red; */
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+}
+.home_container_six p:nth-child(1) {
+  /* border: 1px solid red; */
+  margin-top: 30px;
+  font-size: 18px;
+  color: orangered;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.home_container_six p:nth-child(4) {
+  /* color: rebeccapurple; */
+  color: #ccccccbe;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 26px;
+  width: 65%;
+  margin: auto;
+}
+.home_container_six h1 {
+  font-size: 22px;
+  font-weight: 300;
+}
+.home_container_six img {
+  width: 55%;
+  margin-top: 50px;
+}
+.home_third_line {
+  border: 1px solid orangered;
+  width: 50px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.home_container_seven {
+  /* border: 1px solid red; */
+
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  color: white;
+  gap: 70px 40px;
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+.home_con_seven_card {
+  /* border: 1px solid red; */
+  height: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 30% 68%);
+  gap: 2%;
+  font-family: sans-serif;
+}
+.home_sev_card_child1 {
+  border: 1px solid orangered;
+  border-radius: 5px;
+  height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home_sev_card_child1 img {
+  width: 80%;
+  height: 90%;
+}
+.home_sev_card_child1:nth-child(1) {
+  /* background-color: #399fd0; */
+}
+
+.home_con_seven_card p:nth-child(1) {
+  /* border: 1px solid green; */
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.home_con_seven_card p:nth-child(2) {
+  /* border: 1px solid green; */
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 25px;
+  color: #ccccccb3;
+}
+
+.home_eight_container {
+  /* border: 1px solid red; */
+  background-image: url("https://www.theglassberry.com/assets/img/bg/img-bg-36.jpg");
+  height: 900px;
+  font-family: sans-serif;
+  padding-top: 80px;
+}
+.cont_8_image_div {
+  /* border: 1px solid rebeccapurple; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 70%;
+  margin: auto;
+}
+.cont_8_image_div img {
+  width: 100%;
+}
+.home_eight_container p {
+  color: grey;
+  text-align: center;
+
+  font-size: 20px;
+  font-weight: 300;
+}
+.home_eight_container h1 {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 300;
+}
+.line_4_home {
+  border: 1.5px solid orangered;
+  width: 50px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.home_container_ten {
+  /* border: 1px solid red; */
+
+  height: 500px;
+  background-image: url("./Assets/smoke.jpg");
+  padding: 80px 200px;
+}
+.home_container_ten img {
+  width: 100%;
+  height: 100%;
+}
