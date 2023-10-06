@@ -1,0 +1,68 @@
+/* Basic CSS styling for the navigation bar */
+.navbar {
+  background-color: #007bff;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+/* Style for navigation links */
+.navbar a {
+  float: left;
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the color of navigation links on hover */
+.navbar a:hover {
+  background-color: #0056b3;
+}
+
+/* Basic CSS styling for the form container */
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #007bff;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Style for form labels */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Style for form input fields */
+input[type="text"],
+input[type="url"],
+input[type="number"],
+textarea {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Style for the submit button on hover */
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}

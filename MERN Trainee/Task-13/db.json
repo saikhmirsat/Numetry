@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 4916911373,
+      "title": "s",
+      "description": "d",
+      "price": "2"
+    },
+    {
+      "id": 8243083730,
+      "title": "s",
+      "description": "gd",
+      "price": "4"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "products": [
+    {
+      "id": 9798101364,
+      "image": "https://assets.ajio.com/medias/sys_master/root/20220629/sFkx/62bc0339aeb26921af4f49b4/-473Wx593H-469234311-green-MODEL.jpg",
+      "title": "Men Checked Slim Fit Shirt ",
+      "brand": "BRITISH CLUB",
+      "price": "1999"
+    }
+  ]
+}
