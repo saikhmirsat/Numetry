@@ -35,6 +35,92 @@
       "title": "Men Checked Slim Fit Shirt ",
       "brand": "BRITISH CLUB",
       "price": "1999"
+    },
+    {
+      "id": 7222846073,
+      "image": "https://m.media-amazon.com/images/I/71xl+0HbB3L._AC_UY1100_.jpg",
+      "title": "Black Shirt",
+      "brand": "Calvin Klein",
+      "price": "1299"
+    },
+    {
+      "id": 8655563276,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE2IuY3Zkgoi4J0FcocJZRacT2yjG0CWVNEA&usqp=CAU",
+      "title": "Checked Shirt",
+      "brand": "Jocky",
+      "price": "1990"
+    },
+    {
+      "id": 6352237831,
+      "image": "https://5.imimg.com/data5/TM/ZU/KJ/SELLER-23336766/mens-formal-pant.jpg",
+      "title": "Plain Cutton pant",
+      "brand": "Calvin Klein",
+      "price": "799"
+    },
+    {
+      "id": 5628615138,
+      "image": "https://rookiesjeans.com/wp-content/uploads/2021/01/RJCP101DKCOBALT_1.jpg",
+      "title": "Cargo Pant",
+      "brand": "Calvin Klein",
+      "price": "2299"
+    },
+    {
+      "id": 4510691126,
+      "image": "https://twinbirds.co.in/cdn/shop/products/1904-KURTIPANT-PINKPARADISE.jpg?v=1680776227",
+      "title": "Women Pink Pant",
+      "brand": "ABC",
+      "price": "299"
+    },
+    {
+      "id": 4139598002,
+      "image": "https://5.imimg.com/data5/TP/GA/MY-77887807/women-tracks-pant.jpg",
+      "title": "Woment cotton pant",
+      "brand": "Nike",
+      "price": "899"
+    },
+    {
+      "id": 3272170287,
+      "image": "https://assets0.mirraw.com/images/9541088/Gargi-Mustard-01_long_webp.webp?1687964286",
+      "title": "Yellow saree",
+      "brand": "Anu",
+      "price": "1299"
+    },
+    {
+      "id": 1243646570,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvJCYdqH9dtarN873C3gbWfNHkrstpKrX83A&usqp=CAU",
+      "title": "Red lehenga",
+      "brand": "XYZ",
+      "price": "2999"
+    },
+    {
+      "id": 8967970275,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxD5Lz0JBVYL17YkpXcO0ffSMjs_VoOi451w&usqp=CAU",
+      "title": "Lehenga",
+      "brand": "ABC",
+      "price": "12999"
+    }
+  ],
+  "students": [
+    {
+      "subjectName": "s",
+      "sequence": "2",
+      "languageType": "d",
+      "NoOfCredits": "2",
+      "id": 1
+    },
+    {
+      "subjectName": "s",
+      "sequence": "3",
+      "languageType": "Hindi",
+      "NoOfCredits": "3",
+      "id": 2
+    },
+    {
+      "subjectName": "Hindi",
+      "sequence": "1",
+      "languageType": "Hindi",
+      "NoOfCredits": "33",
+      "id": 3
     }
   ]
 }
