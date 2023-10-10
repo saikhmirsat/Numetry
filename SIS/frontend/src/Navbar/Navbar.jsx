@@ -53,9 +53,6 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-primary ">
       <div className="container">
-        <a className="navbar-brand text-white " href="#">
-          Your App
-        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -71,7 +68,7 @@ export default function Navbar() {
           <ul className="navbar-nav">
             <li className="nav-item dropdown">
               <a
-                className="nav-link dropdown-toggle text-white  "
+                className="nav-link  text-white  dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
                 role="button"

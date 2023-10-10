@@ -6,7 +6,6 @@ function SubjectTable() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  // Function to fetch data from the server
   const fetchData = async () => {
     try {
       const response = await fetch("http://localhost:3000/students");
@@ -94,7 +93,12 @@ function SubjectTable() {
 
   return (
     <div>
-      <h2 className="table-heading">Subject List</h2>
+      <h2
+        className="table-heading"
+        style={{ marginBottom: "30px", textAlign: "left" }}
+      >
+        Subject List
+      </h2>
       {showAlert && (
         <div className="alert alert-success mt-3" role="alert">
           Operation successful!

@@ -22,6 +22,36 @@
       "languageType": "english",
       "NoOfCredits": "1",
       "id": 1
+    },
+    {
+      "subjectName": "Geography",
+      "languageType": "english",
+      "NoOfCredits": "100",
+      "id": 2
+    },
+    {
+      "subjectName": "Science",
+      "languageType": "english",
+      "NoOfCredits": "0",
+      "id": 3
+    },
+    {
+      "subjectName": "Hindi",
+      "languageType": "Hindi",
+      "NoOfCredits": "20",
+      "id": 4
+    },
+    {
+      "subjectName": "Social Science",
+      "languageType": "Hindi",
+      "NoOfCredits": "80",
+      "id": 5
+    },
+    {
+      "subjectName": "English",
+      "languageType": "english",
+      "NoOfCredits": "2",
+      "id": 6
     }
   ]
 }
