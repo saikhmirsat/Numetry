@@ -94,7 +94,7 @@ export default function Navbar() {
         className={`modal fade ${showModal ? "show" : ""}`}
         tabIndex="-1"
         style={{ display: showModal ? "block" : "none" }}
-      >
+       >
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">

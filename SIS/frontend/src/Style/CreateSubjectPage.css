@@ -1,0 +1,265 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+.Create_subject_main_container {
+  /* border: 1px solid red; */
+  height: auto;
+  background-color: #f3f3f4;
+}
+.Create_subject_first_container {
+  margin-top: 20px;
+  border: 1px solid #eaeaea;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  padding-left: 30px;
+}
+.Create_subject_first_container p {
+  margin: 0px;
+  font-size: 15px;
+}
+.Create_subject_second_container {
+  margin-top: 20px;
+  border: 1px solid #eae8e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px;
+  background-color: white;
+}
+.Create_subject_second_container div {
+  /* border: 1px solid green; */
+}
+.Create_subject_sec_con_child_2 {
+  display: flex;
+  gap: 11px;
+}
+.Create_subject_sec_con_child_2 p {
+  border: 1px solid #6c757d;
+  background-color: #6c757d;
+  color: white;
+  padding: 1px 5px;
+  margin: 0px;
+  font-size: 13px;
+  border-radius: 5px;
+  font-family: "SF Regular", "Segoe UI Regular", sans-serif;
+}
+.Create_subject_second_container h3 {
+  font-weight: 400;
+  margin: 0px;
+  font-size: 22px;
+  color: #676360;
+}
+
+.Create_subject_third_container {
+  padding: 20px;
+  /* border: 1px solid green; */
+  margin-top: 20px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 35% 25% 25%);
+  align-items: center;
+  gap: 40px;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+.Create_subject_third_container label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #005be8;
+  margin-bottom: 5px;
+}
+.Create_subject_third_container > div {
+  /* border: 1px solid red; */
+}
+.Create_subject_third_container > div > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.Create_subject_third_container select {
+  width: 100%;
+  font-size: 12px;
+  height: 25px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+.Create_subject_third_container p {
+  width: 30%;
+  margin: 0px;
+  color: #005be8;
+  font-size: 12px;
+  font-weight: bold;
+}
+.Create_subject_forth_container {
+  background-color: white;
+  width: 100%;
+  height: auto;
+  margin-top: 15px;
+  padding: 15px 20px;
+}
+.Create_subject_forth_container > div {
+  border: 0.5px solid #ccc;
+  height: auto;
+}
+.Create_sub_forth_con_header {
+  border: 1px solid #ededed;
+  background-color: #f3f3f4;
+  display: flex;
+}
+.Create_sub_forth_con_header > div {
+  font-size: 12px;
+  font-weight: 400;
+  padding: 15px 10px;
+  border-right: 1px solid white;
+}
+.Create_sub_nursary_conatiner {
+  /* border: 1px solid red; */
+  padding: 10px 20px;
+}
+.Create_sub_lkg_conatiner {
+  border: 1px solid blue;
+}
+.Create_sub_ukg_conatiner {
+  border: 1px solid green;
+}
+.Create_sub_nursary_Languages_container {
+  /* border: 1px solid #ccc; */
+}
+.Create_sub_nursary_Languages_container .Language_div_flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #005be8;
+  margin-bottom: 10px;
+}
+.Create_sub_nursary_Languages_container .Language_div_flex h4 {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.Cre_Sub_nursary_language_table_Head {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: repeat(7, 10% 15% 10% 10% 30% 10% 15%);
+  font-size: 13px;
+  font-weight: 500;
+  background-color: #f3f3f4;
+}
+.Cre_Sub_nursary_language_table_Head > div {
+  border: 0.1px solid #e5e5e6;
+
+  padding: 5px 0px;
+}
+.Cre_Sub_nursary_language_table_Data {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: repeat(7, 10% 15% 10% 10% 30% 10% 15%);
+  font-size: 13px;
+  font-weight: 500;
+}
+.Cre_Sub_nursary_language_table_Data > div {
+  border: 0.1px solid #ccc;
+  padding: 5px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.langauge_table_action_box {
+  border: 1px solid red;
+  display: flex;
+  gap: 10%;
+  justify-content: center;
+  align-items: center;
+}
+.langauge_table_action_box > button {
+  border: none;
+  background-color: unset;
+}
+.subject_name_language_table {
+  display: flex;
+  flex-direction: column;
+}
+.subject_name_language_table button {
+  border: none;
+  font-size: 8px;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+
+.Create_sub_nursary_General_container {
+  /* border: 1px solid #ccc; */
+  margin-top: 50px;
+}
+.Create_sub_nursary_General_container .General_div_flex {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #005be8;
+  margin-bottom: 10px;
+}
+.Create_sub_nursary_General_container .General_div_flex h4 {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.Cre_Sub_nursary_general_table_Head {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: repeat(6, 10% 10% 10% 45% 10% 15%);
+  font-size: 13px;
+  font-weight: 500;
+  background-color: #f3f3f4;
+}
+.Cre_Sub_nursary_general_table_Head > div {
+  border: 0.1px solid #e5e5e6;
+
+  padding: 5px 0px;
+}
+
+.Cre_Sub_nursary_general_table_Data {
+  display: grid;
+  grid-template-columns: repeat(6, 10% 10% 10% 45% 10% 15%);
+  font-size: 13px;
+  font-weight: 500;
+}
+.Cre_Sub_nursary_general_table_Data > div {
+  border: 0.1px solid #ccc;
+  padding: 5px;
+  color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.general_table_action_box {
+  border: 1px solid red;
+  display: flex;
+  gap: 10%;
+  justify-content: center;
+  align-items: center;
+}
+.general_table_action_box > button {
+  border: none;
+  background-color: unset;
+}
+.general_name_general_table {
+  display: flex;
+  flex-direction: column;
+}
+.general_name_general_table button {
+  border: none;
+  font-size: 8px;
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.no_data_found_subject_create {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 5px;
+  color: gray;
+}
