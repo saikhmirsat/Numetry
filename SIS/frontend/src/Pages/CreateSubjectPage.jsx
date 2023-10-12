@@ -9,17 +9,29 @@ export default function CreateSubjectPage() {
   const [ukg, setUkg] = useState(false);
   const [lkg, setLkg] = useState(false);
   const data = [];
+  {
+    /*==================  Alert States================== */
+  }
   const [languageData, setLanguageData] = useState([]);
   const [showAddingAlert, setshowAddingAlert] = useState(false);
   const [showDeletingAlert, setshowDeletingAlert] = useState(false);
   const [showEditAlert, setShowEditAlert] = useState(false);
+  {
+    /*==================  Alert States END================== */
+  }
 
+  {
+    /*================== Language Modal States================== */
+  }
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [subjectName, setSubjectName] = useState("");
   const [sequence, setSequence] = useState(0);
   const [languageType, setLanguageType] = useState("");
   const [NoOfCredits, setNoOfCredits] = useState(null);
-  const numbers = Array.from({ length: 1000 }, (_, i) => i + 1);
+  const numbers = Array.from({ length: 500 }, (_, i) => i + 1);
+  {
+    /*================== Language Modal States END================== */
+  }
 
   //   ==========Language Edit Modal==========
   const [languageEditModalOpen, setLanguageEditModalOpen] = useState(false);
@@ -152,8 +164,6 @@ export default function CreateSubjectPage() {
     }
   };
 
-  //   const EditFunc = (id) => {};
-
   useEffect(() => {
     GetLanguageData();
   }, []);
@@ -266,7 +276,7 @@ export default function CreateSubjectPage() {
           {nursary ? (
             <div className="Create_sub_nursary_conatiner">
               <div className="Create_sub_nursary_Languages_container">
-                {/* Alert with automatic dismissal */}
+                {/*================== Alert with automatic dismissal================== */}
                 {showAddingAlert && (
                   <div
                     className="alert alert-success alert-dismissible fade show"
@@ -312,7 +322,7 @@ export default function CreateSubjectPage() {
                     Your Item is Updated successfully!
                   </div>
                 )}
-                {/* No need to manually dismiss the alert */}
+                {/* ==================No need to manually dismiss the alert================== */}
                 <div className="Language_div_flex">
                   <h4>Languages</h4>
                   <BiSolidPlusSquare size={25} onClick={openLanguageModal} />
@@ -757,7 +767,7 @@ export default function CreateSubjectPage() {
         </div>
       </div>
 
-      {/* Modal */}
+      {/*================== Language Modal for Adding================== */}
       <div
         className={`modal fade ${showLanguageModal ? "show" : ""}`}
         tabIndex="-1"
@@ -838,8 +848,9 @@ export default function CreateSubjectPage() {
           </div>
         </div>
       </div>
+      {/*==================END Language Modal for Adding================== */}
+      {/*==================Language Edit Modal ==================*/}
 
-      {/* Modal */}
       <div
         className={`modal fade ${languageEditModalOpen ? "show" : ""}`}
         tabIndex="-1"
@@ -928,6 +939,7 @@ export default function CreateSubjectPage() {
           </div>
         </div>
       </div>
+      {/*==================END Language Edit Modal================== */}
     </div>
   );
 }

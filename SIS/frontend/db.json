@@ -21,8 +21,22 @@
       "subjectName": "English",
       "languageType": "Hindi",
       "sequenceNumber": 0,
-      "numberOfCredits": 0,
+      "numberOfCredits": "1",
       "id": 1
+    },
+    {
+      "subjectName": "English",
+      "languageType": "english",
+      "sequenceNumber": 1,
+      "numberOfCredits": 2,
+      "id": 2
+    },
+    {
+      "subjectName": "Science",
+      "languageType": "english",
+      "sequenceNumber": 2,
+      "numberOfCredits": 2,
+      "id": 3
     }
   ],
   "General": [],
