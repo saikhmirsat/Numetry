@@ -21,7 +21,7 @@ export default function CreateSubjectPage() {
   }
 
   {
-    /*================== Language Modal States================== */
+    /*================== Language Modal States and functions================== */
   }
   const [showLanguageModal, setShowLanguageModal] = useState(false);
   const [subjectName, setSubjectName] = useState("");
@@ -29,6 +29,81 @@ export default function CreateSubjectPage() {
   const [languageType, setLanguageType] = useState("");
   const [NoOfCredits, setNoOfCredits] = useState(null);
   const numbers = Array.from({ length: 500 }, (_, i) => i + 1);
+
+  const openLanguageModal = () => {
+    setShowLanguageModal(true);
+  };
+
+  const closeLanguageModal = () => {
+    setShowLanguageModal(false);
+  };
+
+  const GetLanguageData = async () => {
+    await fetch(`http://localhost:3000/Languages`)
+      .then((res) => res.json())
+      .then((res) => setLanguageData(res))
+      .catch((err) => console.log(err));
+  };
+
+  const languageFunc = async () => {
+    const obj = {
+      subjectName: subjectName,
+      languageType: languageType,
+      sequenceNumber: +sequence,
+      numberOfCredits: +NoOfCredits,
+    };
+
+    try {
+      await fetch(`http://localhost:3000/Languages`, {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          //   alert("Your subject is created");
+          setshowAddingAlert(true);
+
+          setTimeout(() => {
+            setshowAddingAlert(false);
+          }, 4000);
+          console.log(res);
+          GetLanguageData();
+
+          setSubjectName("");
+          setLanguageType("");
+          setNoOfCredits(null);
+          setSequence(null);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+    closeLanguageModal();
+  };
+  const deleteFunc = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/Languages/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the subject");
+      }
+
+      setshowDeletingAlert(true);
+
+      setTimeout(() => {
+        setshowDeletingAlert(false);
+      }, 23000);
+
+      GetLanguageData();
+    } catch (error) {
+      console.error("Error deleting subject:", error);
+    }
+  };
+
   {
     /*================== Language Modal States END================== */
   }
@@ -90,24 +165,25 @@ export default function CreateSubjectPage() {
 
   //   ==========END Language Edit Modal==========
 
-  const openLanguageModal = () => {
-    setShowLanguageModal(true);
+  //   ========== General Satets & functions==========
+  const [showGeneralModal, setShowGeneralModal] = useState(false);
+  const [GeneralData, setGeneraData] = useState([false]);
+
+  const openGeneralModal = () => {
+    setShowGeneralModal(true);
+  };
+  const closeGeneralModal = () => {
+    setShowGeneralModal(false);
   };
 
-  const closeLanguageModal = () => {
-    setShowLanguageModal(false);
-  };
-
-  const languageFunc = async () => {
+  const GeneralAddFunction = async () => {
     const obj = {
       subjectName: subjectName,
-      languageType: languageType,
       sequenceNumber: +sequence,
-      numberOfCredits: +NoOfCredits,
+      numberOfCredits: NoOfCredits,
     };
-
     try {
-      await fetch(`http://localhost:3000/Languages`, {
+      await fetch(`http://localhost:3000/general`, {
         method: "POST",
         body: JSON.stringify(obj),
         headers: {
@@ -118,33 +194,31 @@ export default function CreateSubjectPage() {
         .then((res) => {
           //   alert("Your subject is created");
           setshowAddingAlert(true);
-
+          GetGeneralData();
           setTimeout(() => {
             setshowAddingAlert(false);
           }, 4000);
           console.log(res);
-          GetLanguageData();
-          setSubjectName("");
-          setLanguageType("");
-          setNoOfCredits(null);
-          setSequence(null);
         });
     } catch (err) {
       console.log(err);
     }
-    closeLanguageModal();
+    closeGeneralModal();
   };
 
-  const GetLanguageData = async () => {
-    await fetch(`http://localhost:3000/Languages`)
+  const GetGeneralData = async () => {
+    await fetch(`http://localhost:3000/general`)
       .then((res) => res.json())
-      .then((res) => setLanguageData(res))
+      .then((res) => {
+        console.log(res);
+        setGeneraData(res);
+      })
       .catch((err) => console.log(err));
   };
 
-  const deleteFunc = async (id) => {
+  const GeneralDeleteFunc = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/Languages/${id}`, {
+      const response = await fetch(`http://localhost:3000/general/${id}`, {
         method: "DELETE",
       });
 
@@ -158,14 +232,18 @@ export default function CreateSubjectPage() {
         setshowDeletingAlert(false);
       }, 23000);
 
-      GetLanguageData();
+      GetGeneralData();
     } catch (error) {
       console.error("Error deleting subject:", error);
     }
   };
 
+  
+  //   ==========END General States==========
+
   useEffect(() => {
     GetLanguageData();
+    GetGeneralData();
   }, []);
 
   return (
@@ -381,7 +459,7 @@ export default function CreateSubjectPage() {
               <div className="Create_sub_nursary_General_container">
                 <div className="General_div_flex">
                   <h4>General / Group Subjects</h4>
-                  <BiSolidPlusSquare size={25} />
+                  <BiSolidPlusSquare size={25} onClick={openGeneralModal} />
                 </div>
                 <div className="Cre_Sub_nursary_general_table_Head">
                   <div>Sequence No.</div>
@@ -392,257 +470,49 @@ export default function CreateSubjectPage() {
                   <div>Action</div>
                 </div>
                 {/* ======= */}
-                <div className="Cre_Sub_nursary_general_table_Data">
-                  <div>1</div>
+                {GeneralData.map((ele) => (
+                  <div
+                    key={ele.id}
+                    className="Cre_Sub_nursary_general_table_Data"
+                  >
+                    <div>{ele.sequenceNumber}</div>
 
-                  <div className="general_name_general_table">
-                    <div>Arabic</div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        justifyContent: "center",
-                        marginTop: "5px",
-                      }}
-                    >
-                      <button style={{ backgroundColor: "#23c6c7" }}>
-                        Academic
+                    <div className="general_name_general_table">
+                      <div>{ele.subjectName}</div>
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "5px",
+                          justifyContent: "center",
+                          marginTop: "5px",
+                        }}
+                      >
+                        <button style={{ backgroundColor: "#23c6c7" }}>
+                          Academic
+                        </button>
+                        <button style={{ backgroundColor: "#f0ad4e" }}>
+                          Non-CGPA
+                        </button>
+                      </div>
+                    </div>
+                    <div>{ele.numberOfCredits}</div>
+                    <div></div>
+                    <div></div>
+                    <div className="general_table_action_box">
+                      <button>
+                        <FiEdit size={16} />
                       </button>
-                      <button style={{ backgroundColor: "#f0ad4e" }}>
-                        Non-CGPA
+                      |
+                      <button>
+                        <MdDeleteForever
+                          size={20}
+                          onClick={() => GeneralDeleteFunc(ele.id)}
+                        />
                       </button>
                     </div>
                   </div>
-                  <div>0</div>
-                  <div></div>
-                  <div></div>
-                  <div className="general_table_action_box">
-                    <button>
-                      <FiEdit size={16} />
-                    </button>
-                    |
-                    <button>
-                      <MdDeleteForever size={20} />
-                    </button>
-                  </div>
-                </div>
-                {/* ======= */}
-                <div className="Cre_Sub_nursary_general_table_Data">
-                  <div>2</div>
-
-                  <div className="general_name_general_table">
-                    <div>Hindi</div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        justifyContent: "center",
-                        marginTop: "5px",
-                      }}
-                    >
-                      <button style={{ backgroundColor: "#23c6c7" }}>
-                        Academic
-                      </button>
-                      <button style={{ backgroundColor: "#f0ad4e" }}>
-                        Non-CGPA
-                      </button>
-                    </div>
-                  </div>
-                  <div>0</div>
-                  <div></div>
-                  <div></div>
-                  <div className="general_table_action_box">
-                    <button>
-                      <FiEdit size={16} />
-                    </button>
-                    |
-                    <button>
-                      <MdDeleteForever size={20} />
-                    </button>
-                  </div>
-                </div>
-                {/* ======= */}
-                <div className="Cre_Sub_nursary_general_table_Data">
-                  <div>3</div>
-
-                  <div className="general_name_general_table">
-                    <div>Math</div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        justifyContent: "center",
-                        marginTop: "5px",
-                      }}
-                    >
-                      <button style={{ backgroundColor: "#23c6c7" }}>
-                        Academic
-                      </button>
-                      <button style={{ backgroundColor: "#f0ad4e" }}>
-                        Non-CGPA
-                      </button>
-                    </div>
-                  </div>
-                  <div>0</div>
-                  <div></div>
-                  <div></div>
-                  <div className="general_table_action_box">
-                    <button>
-                      <FiEdit size={16} />
-                    </button>
-                    |
-                    <button>
-                      <MdDeleteForever size={20} />
-                    </button>
-                  </div>
-                </div>
-                {/* ======= */}
-                <div className="Cre_Sub_nursary_general_table_Data">
-                  <div>4</div>
-
-                  <div className="general_name_general_table">
-                    <div>Science</div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        justifyContent: "center",
-                        marginTop: "5px",
-                      }}
-                    >
-                      <button style={{ backgroundColor: "#23c6c7" }}>
-                        Academic
-                      </button>
-                      <button style={{ backgroundColor: "#f0ad4e" }}>
-                        Non-CGPA
-                      </button>
-                    </div>
-                  </div>
-                  <div>0</div>
-                  <div></div>
-                  <div></div>
-                  <div className="general_table_action_box">
-                    <button>
-                      <FiEdit size={16} />
-                    </button>
-                    |
-                    <button>
-                      <MdDeleteForever size={20} />
-                    </button>
-                  </div>
-                </div>
-                {/* ======= */}
-                <div className="Cre_Sub_nursary_general_table_Data">
-                  <div>5</div>
-
-                  <div className="general_name_general_table">
-                    <div>Geography</div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        justifyContent: "center",
-                        marginTop: "5px",
-                      }}
-                    >
-                      <button style={{ backgroundColor: "#23c6c7" }}>
-                        Academic
-                      </button>
-                      <button style={{ backgroundColor: "#f0ad4e" }}>
-                        Non-CGPA
-                      </button>
-                    </div>
-                  </div>
-                  <div>0</div>
-                  <div></div>
-                  <div></div>
-                  <div className="general_table_action_box">
-                    <button>
-                      <FiEdit size={16} />
-                    </button>
-                    |
-                    <button>
-                      <MdDeleteForever size={20} />
-                    </button>
-                  </div>
-                </div>
-                {/* ======= */}
-                <div className="Cre_Sub_nursary_general_table_Data">
-                  <div>6</div>
-
-                  <div className="general_name_general_table">
-                    <div>Urdu</div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        justifyContent: "center",
-                        marginTop: "5px",
-                      }}
-                    >
-                      <button style={{ backgroundColor: "#23c6c7" }}>
-                        Academic
-                      </button>
-                      <button style={{ backgroundColor: "#f0ad4e" }}>
-                        Non-CGPA
-                      </button>
-                    </div>
-                  </div>
-                  <div>0</div>
-                  <div></div>
-                  <div></div>
-                  <div className="general_table_action_box">
-                    <button>
-                      <FiEdit size={16} />
-                    </button>
-                    |
-                    <button>
-                      <MdDeleteForever size={20} />
-                    </button>
-                  </div>
-                </div>
-                {/* ======= */}
-                <div className="Cre_Sub_nursary_general_table_Data">
-                  <div>7</div>
-
-                  <div className="general_name_general_table">
-                    <div>Phyclogy</div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "5px",
-                        justifyContent: "center",
-                        marginTop: "5px",
-                      }}
-                    >
-                      <button style={{ backgroundColor: "#23c6c7" }}>
-                        Academic
-                      </button>
-                      <button style={{ backgroundColor: "#f0ad4e" }}>
-                        Non-CGPA
-                      </button>
-                    </div>
-                  </div>
-                  <div>0</div>
-                  <div></div>
-                  <div></div>
-                  <div className="general_table_action_box">
-                    <button>
-                      <FiEdit size={16} />
-                    </button>
-                    |
-                    <button>
-                      <MdDeleteForever size={20} />
-                    </button>
-                  </div>
-                </div>
+                ))}
               </div>
               <div
                 style={{ marginTop: "50px" }}
@@ -940,6 +810,78 @@ export default function CreateSubjectPage() {
         </div>
       </div>
       {/*==================END Language Edit Modal================== */}
+      {/* ============General Modal============ */}
+      <div
+        className={`modal fade ${showGeneralModal ? "show" : ""}`}
+        tabIndex="-1"
+        style={{ display: showGeneralModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Create Subject</h5>
+              <button
+                type="button"
+                className="btn-close"
+                aria-label="Close"
+                onClick={closeLanguageModal}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subjectName"
+                    placeholder="Subject Name"
+                    onChange={(e) => setSubjectName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <select
+                    className="form-select"
+                    id="sequence"
+                    onChange={(e) => setSequence(e.target.value)}
+                  >
+                    <option value="">Select Sequence</option>
+                    {numbers.map((number) => (
+                      <option key={number} value={number}>
+                        {number}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="NoOfCredits"
+                    onChange={(e) => setNoOfCredits(e.target.value)}
+                    placeholder="No. of Credits"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={closeGeneralModal}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={GeneralAddFunction}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -39,7 +39,14 @@
       "id": 3
     }
   ],
-  "General": [],
+  "General": [
+    {
+      "subjectName": "Englishd",
+      "sequenceNumber": 3,
+      "numberOfCredits": "1",
+      "id": 2
+    }
+  ],
   "Optional": [],
   "Religius": []
 }
