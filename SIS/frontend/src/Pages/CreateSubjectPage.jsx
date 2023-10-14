@@ -105,7 +105,7 @@ export default function CreateSubjectPage() {
   };
 
   {
-    /*================== Language Modal States END================== */
+    /*==================/////// END Language Modal States /////////================== */
   }
 
   //   ==========Language Edit Modal==========
@@ -163,7 +163,7 @@ export default function CreateSubjectPage() {
     }
   };
 
-  //   ==========END Language Edit Modal==========
+  //   ==========//////// END Language Edit Modal /////////==========
 
   //   ========== General Satets & functions==========
   const [showGeneralModal, setShowGeneralModal] = useState(false);
@@ -238,12 +238,141 @@ export default function CreateSubjectPage() {
     }
   };
 
-  
+  // ==========////////// END General States /////////==========
+
+  // ==========General Edit Modal==========
+  const [generalEditModalOpen, setGeneralEditModalOpen] = useState(false);
+
+  const [editGeneralId, setEditGeneralId] = useState(null);
+
+  const EditFuncGeneral = (id) => {
+    const GeneralToEdit = GeneralData.find((language) => language.id === id);
+
+    if (GeneralToEdit) {
+      setEditGeneralId(id);
+      setEditSubjectName(GeneralToEdit.subjectName);
+      setEditSequence(GeneralToEdit.sequenceNumber);
+      setEditCredits(GeneralToEdit.numberOfCredits);
+      setGeneralEditModalOpen(true);
+    }
+  };
+
+  const updateGeneral = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/general/${editGeneralId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            subjectName: editSubjectName,
+            sequenceNumber: editSequence,
+            numberOfCredits: editCredits,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to save the edit");
+      }
+
+      setGeneralEditModalOpen(false);
+      setShowEditAlert(true);
+
+      setTimeout(() => {
+        setShowEditAlert(false);
+      }, 3000);
+      GetGeneralData();
+    } catch (error) {
+      console.error("Error saving edit:", error);
+    }
+  };
+
+  // ==========END General Edit Modal==========
+
+  // ========== Optional Satets & functions==========
+  const [showOptionalModal, setShowOptionalModal] = useState(false);
+  const [OptionalData, setOptionalData] = useState([]);
+  const [Optional, setOptional] = useState("");
+
+  const openOptionalModal = () => {
+    setShowOptionalModal(true);
+  };
+  const closeOptionalModal = () => {
+    setShowOptionalModal(false);
+  };
+
+  const OptionalAddFunction = async () => {
+    const obj = {
+      subjectName: subjectName,
+      sequenceNumber: +sequence,
+      optional: Optional,
+      numberOfCredits: NoOfCredits,
+    };
+    try {
+      await fetch(`http://localhost:3000/Optional`, {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          // alert("Your subject is created");
+          setshowAddingAlert(true);
+          GetOptionalData();
+          setTimeout(() => {
+            setshowAddingAlert(false);
+          }, 4000);
+          console.log(res);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+    closeOptionalModal();
+  };
+
+  const GetOptionalData = async () => {
+    await fetch(`http://localhost:3000/Optional`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setOptionalData(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const OptionalDeleteFunc = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/Optional/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the subject");
+      }
+
+      setshowDeletingAlert(true);
+
+      setTimeout(() => {
+        setshowDeletingAlert(false);
+      }, 23000);
+
+      GetOptionalData();
+    } catch (error) {
+      console.error("Error deleting subject:", error);
+    }
+  };
+
   //   ==========END General States==========
 
   useEffect(() => {
     GetLanguageData();
     GetGeneralData();
+    GetOptionalData();
   }, []);
 
   return (
@@ -501,7 +630,10 @@ export default function CreateSubjectPage() {
                     <div></div>
                     <div className="general_table_action_box">
                       <button>
-                        <FiEdit size={16} />
+                        <FiEdit
+                          size={16}
+                          onClick={() => EditFuncGeneral(ele.id)}
+                        />
                       </button>
                       |
                       <button>
@@ -520,7 +652,7 @@ export default function CreateSubjectPage() {
               >
                 <div className="Language_div_flex">
                   <h4>Optional / Elective Objects</h4>
-                  <BiSolidPlusSquare size={25} />
+                  <BiSolidPlusSquare size={25} onClick={openOptionalModal} />
                 </div>
                 <div className="Cre_Sub_nursary_language_table_Head">
                   <div>Sequence No.</div>
@@ -531,46 +663,51 @@ export default function CreateSubjectPage() {
                   <div>Skill Subject</div>
                   <div>Action</div>
                 </div>
-                {data.length == 0 ? (
+                {OptionalData.length == 0 ? (
                   <div className="no_data_found_subject_create">
                     No data found
                   </div>
                 ) : (
-                  <div className="Cre_Sub_nursary_language_table_Data">
-                    <div>1</div>
-                    <div>#Language</div>
-                    <div className="subject_name_language_table">
-                      <div>Arabic</div>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "5px",
-                          justifyContent: "center",
-                          marginTop: "5px",
-                        }}
-                      >
-                        <button style={{ backgroundColor: "#23c6c7" }}>
-                          Academic
+                  OptionalData.map((ele) => (
+                    <div className="Cre_Sub_nursary_language_table_Data">
+                      <div>{ele.sequenceNumber}</div>
+                      <div>{ele.optional}</div>
+                      <div className="subject_name_language_table">
+                        <div>{ele.subjectName}</div>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "5px",
+                            justifyContent: "center",
+                            marginTop: "5px",
+                          }}
+                        >
+                          <button style={{ backgroundColor: "#23c6c7" }}>
+                            Academic
+                          </button>
+                          <button style={{ backgroundColor: "#f0ad4e" }}>
+                            Non-CGPA
+                          </button>
+                        </div>
+                      </div>
+                      <div>{ele.numberOfCredits}</div>
+                      <div></div>
+                      <div></div>
+                      <div className="langauge_table_action_box">
+                        <button>
+                          <FiEdit size={16} />
                         </button>
-                        <button style={{ backgroundColor: "#f0ad4e" }}>
-                          Non-CGPA
+                        |
+                        <button>
+                          <MdDeleteForever
+                            size={20}
+                            onClick={() => OptionalDeleteFunc(ele.id)}
+                          />
                         </button>
                       </div>
                     </div>
-                    <div>0</div>
-                    <div></div>
-                    <div></div>
-                    <div className="langauge_table_action_box">
-                      <button>
-                        <FiEdit size={16} />
-                      </button>
-                      |
-                      <button>
-                        <MdDeleteForever size={20} />
-                      </button>
-                    </div>
-                  </div>
+                  ))
                 )}
               </div>
               <div className="Create_sub_nursary_General_container">
@@ -719,8 +856,8 @@ export default function CreateSubjectPage() {
         </div>
       </div>
       {/*==================END Language Modal for Adding================== */}
-      {/*==================Language Edit Modal ==================*/}
 
+      {/*==================Language Edit Modal ==================*/}
       <div
         className={`modal fade ${languageEditModalOpen ? "show" : ""}`}
         tabIndex="-1"
@@ -810,6 +947,7 @@ export default function CreateSubjectPage() {
         </div>
       </div>
       {/*==================END Language Edit Modal================== */}
+
       {/* ============General Modal============ */}
       <div
         className={`modal fade ${showGeneralModal ? "show" : ""}`}
@@ -882,6 +1020,170 @@ export default function CreateSubjectPage() {
           </div>
         </div>
       </div>
+      {/* ============END General Modal============ */}
+
+      {/*==================general Edit Modal ==================*/}
+      <div
+        className={`modal fade ${generalEditModalOpen ? "show" : ""}`}
+        tabIndex="-1"
+        style={{ display: generalEditModalOpen ? "block" : "none" }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Edit Language</h5>
+              <button
+                type="button"
+                className="btn-close"
+                aria-label="Close"
+                onClick={() => {
+                  setGeneralEditModalOpen(false);
+                }}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subjectName"
+                    placeholder="Subject Name"
+                    value={editSubjectName || ""}
+                    onChange={(e) => setEditSubjectName(e.target.value)}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <select
+                    className="form-select"
+                    id="sequence"
+                    value={editSequence || ""}
+                    onChange={(e) => setEditSequence(e.target.value)}
+                  >
+                    <option value="">Select Sequence</option>
+                    {numbers.map((number) => (
+                      <option key={number} value={number}>
+                        {number}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="NoOfCredits"
+                    value={editCredits || ""}
+                    onChange={(e) => setEditCredits(e.target.value)}
+                    placeholder="No. of Credits"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setGeneralEditModalOpen(false);
+                }}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={updateGeneral} // You need to create this function
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*==================END general Edit Modal================== */}
+
+      {/*================== Optional Modal for Adding================== */}
+      <div
+        className={`modal fade ${showOptionalModal ? "show" : ""}`}
+        tabIndex="-1"
+        style={{ display: showOptionalModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Create Subject</h5>
+              <button
+                type="button"
+                className="btn-close"
+                aria-label="Close"
+                onClick={closeOptionalModal}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subjectName"
+                    placeholder="Subject Name"
+                    onChange={(e) => setSubjectName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="languageType"
+                    placeholder="Language Type"
+                    onChange={(e) => setLanguageType(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <select
+                    className="form-select"
+                    id="optional"
+                    onChange={(e) => setOptional(e.target.value)}
+                  >
+                    <option value="">Select Optional / Elective Objects</option>
+
+                    <option value="Elective-1">Elective-1</option>
+                    <option value="Elective-2">Elective-2</option>
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="NoOfCredits"
+                    onChange={(e) => setNoOfCredits(e.target.value)}
+                    placeholder="No. of Credits"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={closeOptionalModal}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={OptionalAddFunction}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*==================END Optional Modal for Adding================== */}
     </div>
   );
 }
