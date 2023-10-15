@@ -367,12 +367,195 @@ export default function CreateSubjectPage() {
     }
   };
 
-  //   ==========END General States==========
+  //   ==========END Optional States==========
 
+  // ==========Optional Edit Modal==========
+  const [OptionalEditModalOpen, setOptionalEditModalOpen] = useState(false);
+  const [editOptional, setEditOptional] = useState("");
+  const [editOptionalId, setEditOptionalId] = useState(null);
+
+  const EditFuncOptional = (id) => {
+    const OptionalToEdit = OptionalData.find((language) => language.id === id);
+
+    if (OptionalToEdit) {
+      setEditOptionalId(id);
+      setEditSubjectName(OptionalToEdit.subjectName);
+      setEditSequence(OptionalToEdit.sequenceNumber);
+      setEditCredits(OptionalToEdit.numberOfCredits);
+      setEditOptional(OptionalToEdit.setOptional);
+
+      setOptionalEditModalOpen(true);
+    }
+  };
+
+  const updateOptional = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/Optional/${editOptionalId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            subjectName: editSubjectName,
+            sequenceNumber: editSequence,
+            numberOfCredits: editCredits,
+            optional: editOptional,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to save the edit");
+      }
+
+      setOptionalEditModalOpen(false);
+      setShowEditAlert(true);
+
+      setTimeout(() => {
+        setShowEditAlert(false);
+      }, 3000);
+      GetOptionalData();
+    } catch (error) {
+      console.error("Error saving edit:", error);
+    }
+  };
+
+  // ==========END Optional Edit Modal==========
+
+  //   ========== General Satets & functions==========
+  const [showReligiusModal, setShowReligiusModal] = useState(false);
+  const [ReligiusData, setReligiusData] = useState([false]);
+
+  const openReligiusModal = () => {
+    setShowReligiusModal(true);
+  };
+  const closeReligiusModal = () => {
+    setShowReligiusModal(false);
+  };
+
+  const ReligiusAddFunction = async () => {
+    const obj = {
+      subjectName: subjectName,
+      sequenceNumber: +sequence,
+      numberOfCredits: +NoOfCredits,
+    };
+    try {
+      await fetch(`http://localhost:3000/Religius`, {
+        method: "POST",
+        body: JSON.stringify(obj),
+        headers: {
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          //   alert("Your subject is created");
+          setshowAddingAlert(true);
+          GetReligiusData();
+          setTimeout(() => {
+            setshowAddingAlert(false);
+          }, 4000);
+          console.log(res);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+    closeReligiusModal();
+  };
+
+  const GetReligiusData = async () => {
+    await fetch(`http://localhost:3000/Religius`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        setReligiusData(res);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const ReligiusDeleteFunc = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/Religius/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the subject");
+      }
+
+      setshowDeletingAlert(true);
+
+      setTimeout(() => {
+        setshowDeletingAlert(false);
+      }, 23000);
+
+      GetReligiusData();
+    } catch (error) {
+      console.error("Error deleting subject:", error);
+    }
+  };
+
+  // ==========////////// END General States /////////==========
+
+  // ==========General Edit Modal==========
+  const [ReligiusEditModalOpen, setReligiusEditModalOpen] = useState(false);
+  console.log(ReligiusEditModalOpen);
+
+  const [editReligiusId, setEditReligiusId] = useState(null);
+
+  const EditFuncReligius = (id) => {
+    const ReligiusToEdit = ReligiusData.find((language) => language.id === id);
+
+    if (ReligiusToEdit) {
+      setEditReligiusId(id);
+      setEditSubjectName(ReligiusToEdit.subjectName);
+      setEditSequence(ReligiusToEdit.sequenceNumber);
+      setEditCredits(ReligiusToEdit.numberOfCredits);
+      setReligiusEditModalOpen(true);
+    }
+  };
+
+  const updateReligius = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/Religius/${editReligiusId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            subjectName: editSubjectName,
+            sequenceNumber: editSequence,
+            numberOfCredits: editCredits,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to save the edit");
+      }
+
+      setReligiusEditModalOpen(false);
+      setShowEditAlert(true);
+
+      setTimeout(() => {
+        setShowEditAlert(false);
+      }, 3000);
+      GetReligiusData();
+    } catch (error) {
+      console.error("Error saving edit:", error);
+    }
+  };
+
+  // ==========END General Edit Modal==========
   useEffect(() => {
     GetLanguageData();
     GetGeneralData();
     GetOptionalData();
+    GetReligiusData();
   }, []);
 
   return (
@@ -669,7 +852,10 @@ export default function CreateSubjectPage() {
                   </div>
                 ) : (
                   OptionalData.map((ele) => (
-                    <div className="Cre_Sub_nursary_language_table_Data">
+                    <div
+                      className="Cre_Sub_nursary_language_table_Data"
+                      key={ele.id}
+                    >
                       <div>{ele.sequenceNumber}</div>
                       <div>{ele.optional}</div>
                       <div className="subject_name_language_table">
@@ -696,7 +882,10 @@ export default function CreateSubjectPage() {
                       <div></div>
                       <div className="langauge_table_action_box">
                         <button>
-                          <FiEdit size={16} />
+                          <FiEdit
+                            size={16}
+                            onClick={() => EditFuncOptional(ele.id)}
+                          />
                         </button>
                         |
                         <button>
@@ -713,7 +902,7 @@ export default function CreateSubjectPage() {
               <div className="Create_sub_nursary_General_container">
                 <div className="General_div_flex">
                   <h4>Religius Subjects</h4>
-                  <BiSolidPlusSquare size={25} />
+                  <BiSolidPlusSquare size={25} onClick={openReligiusModal} />
                 </div>
                 <div className="Cre_Sub_nursary_general_table_Head">
                   <div>Sequence No.</div>
@@ -723,46 +912,57 @@ export default function CreateSubjectPage() {
                   <div>Skill Subject</div>
                   <div>Action</div>
                 </div>
-                {data.length == 0 ? (
+                {ReligiusData.length == 0 ? (
                   <div className="no_data_found_subject_create">
                     No data found
                   </div>
                 ) : (
-                  <div className="Cre_Sub_nursary_general_table_Data">
-                    <div>1</div>
+                  ReligiusData.map((ele) => (
+                    <div
+                      key={ele.id}
+                      className="Cre_Sub_nursary_general_table_Data"
+                    >
+                      <div>{ele.sequenceNumber}</div>
 
-                    <div className="general_name_general_table">
-                      <div>Arabic</div>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "5px",
-                          justifyContent: "center",
-                          marginTop: "5px",
-                        }}
-                      >
-                        <button style={{ backgroundColor: "#23c6c7" }}>
-                          Academic
+                      <div className="general_name_general_table">
+                        <div>{ele.subjectName}</div>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "5px",
+                            justifyContent: "center",
+                            marginTop: "5px",
+                          }}
+                        >
+                          <button style={{ backgroundColor: "#23c6c7" }}>
+                            Academic
+                          </button>
+                          <button style={{ backgroundColor: "#f0ad4e" }}>
+                            Non-CGPA
+                          </button>
+                        </div>
+                      </div>
+                      <div>{ele.numberOfCredits}</div>
+                      <div></div>
+                      <div></div>
+                      <div className="general_table_action_box">
+                        <button>
+                          <FiEdit
+                            size={16}
+                            onClick={() => EditFuncReligius(ele.id)}
+                          />
                         </button>
-                        <button style={{ backgroundColor: "#f0ad4e" }}>
-                          Non-CGPA
+                        |
+                        <button>
+                          <MdDeleteForever
+                            size={20}
+                            onClick={() => ReligiusDeleteFunc(ele.id)}
+                          />
                         </button>
                       </div>
                     </div>
-                    <div>0</div>
-                    <div></div>
-                    <div></div>
-                    <div className="general_table_action_box">
-                      <button>
-                        <FiEdit size={16} />
-                      </button>
-                      |
-                      <button>
-                        <MdDeleteForever size={20} />
-                      </button>
-                    </div>
-                  </div>
+                  ))
                 )}
               </div>
             </div>
@@ -1184,6 +1384,256 @@ export default function CreateSubjectPage() {
         </div>
       </div>
       {/*==================END Optional Modal for Adding================== */}
+
+      {/*==================Language Edit Modal ==================*/}
+      <div
+        className={`modal fade ${OptionalEditModalOpen ? "show" : ""}`}
+        tabIndex="-1"
+        style={{ display: OptionalEditModalOpen ? "block" : "none" }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Edit Language</h5>
+              <button
+                type="button"
+                className="btn-close"
+                aria-label="Close"
+                onClick={() => {
+                  setOptionalEditModalOpen(false);
+                }}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subjectName"
+                    placeholder="Subject Name"
+                    value={editSubjectName || ""}
+                    onChange={(e) => setEditSubjectName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <select
+                    className="form-select"
+                    id="optional"
+                    value={editOptional || ""}
+                    onChange={(e) => setEditOptional(e.target.value)}
+                  >
+                    <option value="">Select Optional / Elective Objects</option>
+
+                    <option value="Elective-1">Elective-1</option>
+                    <option value="Elective-2">Elective-2</option>
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <select
+                    className="form-select"
+                    id="sequence"
+                    value={editSequence || ""}
+                    onChange={(e) => setEditSequence(e.target.value)}
+                  >
+                    <option value="">Select Sequence</option>
+                    {numbers.map((number) => (
+                      <option key={number} value={number}>
+                        {number}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="NoOfCredits"
+                    value={editCredits || ""}
+                    onChange={(e) => setEditCredits(e.target.value)}
+                    placeholder="No. of Credits"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setOptionalEditModalOpen(false);
+                }}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={updateOptional} // You need to create this function
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*==================END Optional Edit Modal================== */}
+
+      {/* ============Religius Modal============ */}
+      <div
+        className={`modal fade ${showReligiusModal ? "show" : ""}`}
+        tabIndex="-1"
+        style={{ display: showReligiusModal ? "block" : "none" }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Create Subject</h5>
+              <button
+                type="button"
+                className="btn-close"
+                aria-label="Close"
+                onClick={closeReligiusModal}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subjectName"
+                    placeholder="Subject Name"
+                    onChange={(e) => setSubjectName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <select
+                    className="form-select"
+                    id="sequence"
+                    onChange={(e) => setSequence(e.target.value)}
+                  >
+                    <option value="">Select Sequence</option>
+                    {numbers.map((number) => (
+                      <option key={number} value={number}>
+                        {number}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="NoOfCredits"
+                    onChange={(e) => setNoOfCredits(e.target.value)}
+                    placeholder="No. of Credits"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={closeReligiusModal}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={ReligiusAddFunction}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* ============END Religius Modal============ */}
+
+      {/*==================Religius Edit Modal ==================*/}
+      <div
+        className={`modal fade ${ReligiusEditModalOpen ? "show" : ""}`}
+        tabIndex="-1"
+        style={{ display: ReligiusEditModalOpen ? "block" : "none" }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Edit Language</h5>
+              <button
+                type="button"
+                className="btn-close"
+                aria-label="Close"
+                onClick={() => {
+                  setReligiusEditModalOpen(false);
+                }}
+              ></button>
+            </div>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="subjectName"
+                    placeholder="Subject Name"
+                    value={editSubjectName || ""}
+                    onChange={(e) => setEditSubjectName(e.target.value)}
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <select
+                    className="form-select"
+                    id="sequence"
+                    value={editSequence || ""}
+                    onChange={(e) => setEditSequence(e.target.value)}
+                  >
+                    <option value="">Select Sequence</option>
+                    {numbers.map((number) => (
+                      <option key={number} value={number}>
+                        {number}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="mb-3">
+                  <input
+                    type="number"
+                    className="form-control"
+                    id="NoOfCredits"
+                    value={editCredits || ""}
+                    onChange={(e) => setEditCredits(e.target.value)}
+                    placeholder="No. of Credits"
+                  />
+                </div>
+              </form>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={() => {
+                  setReligiusEditModalOpen(false);
+                }}
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={updateReligius} // You need to create this function
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*==================END Religius Edit Modal================== */}
     </div>
   );
 }

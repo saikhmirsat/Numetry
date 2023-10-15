@@ -34,17 +34,22 @@
   ],
   "General": [
     {
-      "subjectName": "English",
-      "sequenceNumber": 1,
-      "optional": "Elective-1",
-      "numberOfCredits": "2",
-      "id": 2
-    },
-    {
       "subjectName": "Hindi",
       "sequenceNumber": 1,
       "numberOfCredits": "3",
       "id": 3
+    },
+    {
+      "subjectName": "English",
+      "sequenceNumber": 2,
+      "numberOfCredits": "0",
+      "id": 4
+    },
+    {
+      "subjectName": "Hindi",
+      "sequenceNumber": 0,
+      "numberOfCredits": null,
+      "id": 5
     }
   ],
   "Optional": [
@@ -54,21 +59,20 @@
       "optional": "Elective-1",
       "numberOfCredits": "2",
       "id": 1
-    },
-    {
-      "subjectName": "English",
-      "sequenceNumber": 2,
-      "optional": "Elective-1",
-      "numberOfCredits": "0",
-      "id": 2
-    },
-    {
-      "subjectName": "Hindi",
-      "sequenceNumber": 2,
-      "optional": "Elective-1",
-      "numberOfCredits": "0",
-      "id": 3
     }
   ],
-  "Religius": []
+  "Religius": [
+    {
+      "subjectName": "English",
+      "sequenceNumber": "7",
+      "numberOfCredits": 2,
+      "id": 1
+    },
+    {
+      "subjectName": "Math",
+      "sequenceNumber": "3",
+      "numberOfCredits": "7",
+      "id": 2
+    }
+  ]
 }
